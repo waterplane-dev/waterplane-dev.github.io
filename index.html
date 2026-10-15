@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>waterplane: drive Claude Code on your desktop from your phone</title>
+<meta name="description" content="waterplane drives the real Claude Code CLI on your own desktop from your phone, over Tailscale, with files, diffs, builds, screenshots, a queue and what every turn costs around it.">
+<meta name="theme-color" content="#eef1f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0d10" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="waterplane">
+<meta property="og:description" content="The real Claude Code CLI on your desktop, driven from your phone over Tailscale.">
+<meta property="og:image" content="https://waterplane.dev/assets/og.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://waterplane.dev/">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <img src="assets/icon.svg" width="28" height="28" alt="">
+  <a class="wordmark" href="./">waterplane<span>_</span></a>
+</header>
+
+<main>
+
+<section class="row hero">
+  <div class="text">
+    <h1>An IDE, rethought for the phone in the age of agentic coding.</h1>
+    <p class="lede">The agent writes the code; what you need in your hand is the steering.
+    waterplane drives the real Claude Code CLI on your own desktop, over Tailscale, and puts the
+    workbench around it: files and diffs, commits and builds, the screenshots it makes, a queue and
+    a schedule, and what every turn costs.</p>
+    <p class="links">
+      <a href="https://waterplane.dev/demo/">Try the demo</a><span class="sep">·</span>
+      <a href="#install">Install</a><span class="sep">·</span>
+      <a href="#compare">How it compares</a>
+    </p>
+    <p class="muted small">macOS, Linux, Windows via WSL2. Android app or web app; no iOS app yet.
+    The demo runs entirely in your browser, best on a phone.</p>
+  </div>
+  <figure class="phone">
+    <img src="assets/first-look.gif" width="540" height="1280" fetchpriority="high"
+      alt="The real claude terminal on a phone works a typed prompt; a screenshot arrives, is circled and sent back, and the after screenshot shows the fix">
+    <figcaption>The demo, filmed. Fictional repo, real-shaped numbers.</figcaption>
+  </figure>
+</section>
+
+<section class="row" id="what">
+  <div class="text">
+    <h2>It is the CLI, not a copy of it</h2>
+    <p>A small Node daemon on your desktop runs the actual <code>claude</code> binary in a
+    terminal and streams that terminal to your phone. Because nothing is re-implemented, every
+    slash command, plan and trust prompt, <code>/btw</code> and the context meter work as they do
+    at the desk; choice boxes come up as buttons.</p>
+    <p>The phone talks to your desktop over your own tailnet. There is no waterplane server, no
+    account and no telemetry.</p>
+    <figure class="diagram">
+      <img src="assets/flow.svg" width="900" height="640" loading="lazy"
+        alt="Your phone talks to your own desktop over Tailscale: the waterplane daemon runs the real claude CLI in a terminal on your repos and streams the screen back; screenshots arrive as images, a scheduled job fires while the phone sleeps, and a push wakes it when the job is done">
+    </figure>
+  </div>
+</section>
+
+<section class="row" id="gallery">
+  <div class="text">
+    <h2>Show it, don't describe it</h2>
+    <p>Whatever Claude leaves in <code>.claude/outbox/</code> shows up on the phone as a picture or
+    a file, with a badge on the repo and a notification. Open a screenshot, circle the broken spot,
+    type what to change, and the marked-up picture goes back into the prompt.</p>
+    <p>Ask Claude to build and run your app in a simulator, emulator, browser or on an attached
+    phone, and the verified screenshot lands in that gallery. For Android work, the APK installs
+    itself on your own phone.</p>
+  </div>
+  <figure class="phone">
+    <img src="assets/gallery-and-files.png" width="896" height="1160" loading="lazy"
+      alt="The gallery lists what Claude left in the outbox: a markdown file, a live HTML page and a screenshot open on the phone">
+  </figure>
+</section>
+
+<section class="row" id="limit">
+  <div class="text">
+    <h2>When the usage limit hits, it carries on</h2>
+    <p>The host sees the limit, waits for the reset and continues the session, reopening the
+    conversation with <code>--continue</code> if the CLI exited. Retries are bounded, and there is
+    an off switch per session and for the desktop.</p>
+    <p>To stop before the wall instead, give a session a budget in tokens, dollars or a share of
+    the 5-hour or weekly window. The next send is held when it is reached, with your words kept.</p>
+  </div>
+  <figure class="phone">
+    <img src="assets/limit-and-budget.gif" width="540" height="1280" loading="lazy"
+      alt="Claude stops at the 5-hour usage wall; at the reset waterplane types continue and the turn finishes">
+  </figure>
+</section>
+
+<section class="row" id="queue">
+  <div class="text">
+    <h2>Queue it now, or schedule it against the windows</h2>
+    <p>A prompt sent while you are offline or while the session is busy waits in a queue and is
+    typed in exactly once. Or post one for later: at a time, when the session goes quiet, after
+    another one finishes, or two hours before the weekly reset to spend what is left.</p>
+  </div>
+  <figure class="phone">
+    <img src="assets/queue-and-schedule.gif" width="540" height="1280" loading="lazy"
+      alt="A prompt queued behind a running turn starts by itself when the turn ends; schedules wait for a time or for the weekly window">
+  </figure>
+</section>
+
+<section class="row" id="cost">
+  <div class="text">
+    <h2>Know what each turn costs</h2>
+    <p>Every finished turn shows its tokens in, out and cached, priced at list price, and what the
+    next turn will cost against starting fresh. The ledger splits a week by day, repo and model.
+    It is all read off the CLI's own logs; where there is nothing to read, nothing is shown.</p>
+    <p>Repo health tracks what makes every request dearer over time: a <code>CLAUDE.md</code> that
+    only grows, files past a thousand lines, the same files edited on every turn.</p>
+    <p class="muted small">Also in the box: git diffs and commits, builds run without a session so
+    they spend no tokens, push-to-talk, a fork from any turn, several desktops in one app, and
+    plugins for buttons we did not think of.</p>
+  </div>
+  <figure class="phone">
+    <img src="assets/numbers.gif" width="420" height="996" loading="lazy"
+      alt="A week of heavy use priced at API list price, what drives the cost, and when a fresh session would be cheaper">
+  </figure>
+</section>
+
+<!-- ================================================================== REPO LINKS ======
+     Everything that points into github.com/waterplane-dev/waterplane is in this one
+     section: the installer, the clone, Releases, SECURITY.md, the licence.
+
+     PRE-LAUNCH VARIANT (only if this site is live before the repo is public): replace
+     everything between BEGIN and END with the block inside the comment below, and
+     restore it on launch day.
+
+     <section class="row" id="install">
+       <div class="text">
+         <h2>Install</h2>
+         <p>The source, the installer and the Android app are published with the repository.
+         Until then, <a href="https://waterplane.dev/demo/">the demo</a> runs the whole app
+         in your browser.</p>
+       </div>
+     </section>
+     ===================================================================================== -->
+<!-- BEGIN repo-links -->
+<section class="row" id="install">
+  <div class="text">
+    <h2>Install</h2>
+    <p class="note">The daemon spawns <code>claude</code>, which can read, edit and run files on
+    your machine, and there is no app login by default: the network is the boundary. It binds only
+    loopback and your Tailscale IP. Read <a href="https://github.com/waterplane-dev/waterplane/blob/main/SECURITY.md">SECURITY.md</a>
+    before you install. Unofficial: not affiliated with or endorsed by Anthropic.</p>
+    <p>You need Claude Code installed and signed in, Tailscale on the desktop and the phone, and
+    tmux 3.3 or newer (the installer offers it). The installer brings its own Node and verifies
+    checksums:</p>
+<pre><code>curl -fsSL https://waterplane.dev/install.sh | sh</code></pre>
+    <p>Or from source:</p>
+<pre><code>git clone https://github.com/waterplane-dev/waterplane.git
+cd waterplane
+npm ci
+npm run doctor
+npm run build
+npm start</code></pre>
+    <p><code>waterplane doctor</code> says what is missing and what to type. The host prints its
+    address; open it on the phone, or use the Android app from the
+    <a href="https://github.com/waterplane-dev/waterplane/releases/latest">latest release</a>.
+    Windows, Docker, HTTPS and the background service:
+    <a href="https://github.com/waterplane-dev/waterplane/blob/main/docs/install.md">the install guide</a>.</p>
+    <p class="links">
+      <a href="https://github.com/waterplane-dev/waterplane">Source on GitHub</a><span class="sep">·</span>
+      <a href="https://github.com/waterplane-dev/waterplane/blob/main/LICENSE">MIT licence</a><span class="sep">·</span>
+      <a href="https://github.com/waterplane-dev/waterplane/blob/main/docs/guide.md">A tour, feature by feature</a>
+    </p>
+  </div>
+  <figure class="phone">
+    <img src="assets/setup.gif" width="540" height="1280" loading="lazy"
+      alt="The desktop builds and starts the host; on the phone the app lists the repo, + new starts claude in it, and its trust question is answered with a tap">
+    <figcaption>From the build on the desktop to claude running in your repo.</figcaption>
+  </figure>
+</section>
+<!-- END repo-links -->
+
+<section class="row" id="compare">
+  <div class="text">
+    <h2>How it compares</h2>
+    <p>Reaching your agent from a phone is not new. Anthropic's Remote Control puts a running
+    session in the Claude app, and Happy, Paseo and Orca put coding agents on a phone too. Remote
+    Control and waterplane work side by side.</p>
+    <p>What is different here is the workbench around the session: everything on this page,
+    plus a reader for the same session with markdown rendered and tool calls folded.</p>
+    <p>An agent that runs Claude Code for you is enough for "go do X, message me". We built this
+    for the times you want to watch the session, answer its questions and read the diff before the
+    commit.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>We built waterplane to work on our own repos away from the desk. MIT licensed.</p>
+  <p><a href="privacy.html">Privacy</a><span class="sep"> · </span>Claude and Claude Code are
+  trademarks of Anthropic, used here only to name the CLI waterplane drives.</p>
+</footer>
+
+</div>
+</body>
+</html>
