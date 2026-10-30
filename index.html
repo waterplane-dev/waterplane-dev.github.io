@@ -101,9 +101,9 @@
 <section class="row" id="know-what-it-costs">
   <div class="text">
 <h2>Know what it costs</h2>
-<p>Every finished turn says what it cost: tokens in, out and cached, and dollars at list price, plus what the <em>next</em> turn will cost compared with a fresh session. The token ledger splits every total by day, repo and model; the header carries the 5-hour and weekly usage windows with their resets; each session has a context sheet showing how full the window was over time and where it compacted. A per-repo check weighs <code>CLAUDE.md</code> and skill descriptions, the part every turn pays for again. All read off the CLI's own logs and screens; where there is nothing to read, nothing is shown rather than a guess.</p>
+<p>Every finished turn says what it cost: tokens in, out and cached, and dollars at list price, plus what the <em>next</em> turn will cost compared with a fresh session. The token ledger splits every total by day, repo and model; the header carries the 5-hour and weekly usage windows with their resets; each session has a context sheet showing how full the window was over time and where it compacted, and on a fan-out session what its subagents cost, each one as a bar, the skills they loaded and what every turn carries before your prompt. A per-repo check weighs <code>CLAUDE.md</code> and skill descriptions, the part every turn pays for again. All read off the CLI's own logs and screens; where there is nothing to read, nothing is shown rather than a guess.</p>
   </div>
-  <figure class="phone"><img src="assets/numbers.gif" width="420" height="996" loading="lazy" alt="A week of heavy use priced at API list price, what drives the cost, and when a fresh session would be cheaper"></figure>
+  <figure class="phone"><img src="assets/numbers.gif" width="390" height="924" loading="lazy" alt="A week of heavy use priced at API list price, what drives the cost, and a ten-hour session whose subagents are most of its bill"></figure>
 </section>
 <!-- /readme:cost -->
 
@@ -159,7 +159,7 @@
 </ul>
 <p>The installer (macOS, Linux, WSL2) brings its own pinned Node, verifies checksums, and adds a <code>waterplane</code> command with <code>start</code>, <code>doctor</code>, <code>service</code>, <code>update</code> and <code>pair</code>:</p>
 <pre><code>curl -fsSL https://github.com/waterplane-dev/waterplane/releases/latest/download/install.sh | sh</code></pre>
-<p>Or from source, which also needs <strong>Node ≥ 20.12</strong> and <strong>tmux 3.3+</strong> (every session runs inside it, so it survives a host restart; the installer handles both). The doctor builds what it checks, so it runs before the build:</p>
+<p>Or from source, which also needs <strong>Node ≥ 22.12</strong> and <strong>tmux 3.3+</strong> (every session runs inside it, so it survives a host restart; the installer handles both). The doctor builds what it checks, so it runs before the build:</p>
 <pre><code>git clone https://github.com/waterplane-dev/waterplane.git
 cd waterplane
 npm ci             # installs the lockfile exactly; runs no dependency install scripts
@@ -200,6 +200,11 @@ npm start</code></pre>
   <p><a href="privacy.html">Privacy</a><span class="sep"> · </span><a href="impressum.html">Impressum</a><span class="sep"> · </span>Claude and Claude Code are
   trademarks of Anthropic, used here only to name the CLI waterplane drives.</p>
 </footer>
+
+<!-- Visit count: a plain image from our own counter (scripts/site/counter, Cloud Run Frankfurt), no
+     script, nothing stored on the device, so no consent banner (privacy.html#statistics says what
+     it sends; keep the two in step). -->
+<img src="https://counter-324911926296.europe-west3.run.app/c?p=/" alt="" width="1" height="1" style="position:absolute;left:-9999px">
 
 </div>
 </body>
