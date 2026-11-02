@@ -103,7 +103,7 @@
 <h2>Know what it costs</h2>
 <p>Every finished turn says what it cost: tokens in, out and cached, and dollars at list price, plus what the <em>next</em> turn will cost compared with a fresh session. The token ledger splits every total by day, repo and model; the header carries the 5-hour and weekly usage windows with their resets; each session has a context sheet showing how full the window was over time and where it compacted, and on a fan-out session what its subagents cost, each one as a bar, the skills they loaded and what every turn carries before your prompt. A per-repo check weighs <code>CLAUDE.md</code> and skill descriptions, the part every turn pays for again. All read off the CLI's own logs and screens; where there is nothing to read, nothing is shown rather than a guess.</p>
   </div>
-  <figure class="phone"><img src="assets/numbers.gif" width="390" height="924" loading="lazy" alt="A week of heavy use priced at API list price, what drives the cost, and a ten-hour session whose subagents are most of its bill"></figure>
+  <figure class="phone"><img src="assets/numbers.gif" width="420" height="996" loading="lazy" alt="A week of heavy use priced at API list price, what drives the cost, and a ten-hour session whose subagents are most of its bill"></figure>
 </section>
 <!-- /readme:cost -->
 
@@ -154,7 +154,7 @@
 </div>
 <p>You need:</p>
 <ul>
-  <li><strong><a href="https://claude.com/claude-code">Claude Code</a> installed</strong> (<code>curl -fsSL https://claude.ai/install.sh | bash</code>, or <code>npm install -g @anthropic-ai/claude-code</code>), and something for it to run on: a <strong>paid Claude plan</strong> (Pro, Max, Team) or an <strong>Anthropic API key</strong> — run <code>claude</code> once and sign in — or, with no account, a <strong>local model through Ollama</strong>. GitHub Copilot works too, as a plugin (<code>install.sh --with copilot</code>).</li>
+  <li><strong><a href="https://claude.com/claude-code">Claude Code</a> installed</strong> (<code>curl -fsSL https://claude.ai/install.sh | bash</code>, or <code>npm install -g @anthropic-ai/claude-code</code>), and something for it to run on: a <strong>paid Claude plan</strong> (Pro, Max, Team) or an <strong>Anthropic API key</strong> — run <code>claude</code> once and sign in — or, with no account, a <strong>local model through Ollama</strong>. GitHub Copilot works too, as a <a href="https://github.com/waterplane-dev/waterplane-plugin-copilot">plugin</a> (<code>install.sh --with copilot</code>). Making a repo work well for Copilot and local models: <a href="https://github.com/waterplane-dev/waterplane/blob/main/docs/guide-other-agents.md">guide</a>.</li>
   <li><strong>A way for the phone to reach the desktop.</strong> Recommended: <strong><a href="https://tailscale.com">Tailscale</a></strong> on both, on the same tailnet. It works from anywhere, its device sign-in is the gate, and its HTTPS gives the phone push, install and clipboard. From the same Wi-Fi or over a VPN of your own, a password does the gating instead: <a href="https://github.com/waterplane-dev/waterplane/blob/main/docs/install.md#without-tailscale-same-wi-fi-or-your-own-vpn">without Tailscale</a>. With neither, the daemon binds loopback only and is reachable just from the desktop.</li>
 </ul>
 <p>The installer (macOS, Linux, WSL2) brings its own pinned Node, verifies checksums, and adds a <code>waterplane</code> command with <code>start</code>, <code>doctor</code>, <code>service</code>, <code>update</code> and <code>pair</code>:</p>
@@ -201,7 +201,7 @@ npm start</code></pre>
   trademarks of Anthropic, used here only to name the CLI waterplane drives.</p>
 </footer>
 
-<!-- Visit count: a plain image from our own counter (scripts/site/counter, Cloud Run Frankfurt), no
+<!-- Visit count: a plain image from our own counter (Cloud Run, Frankfurt), no
      script, nothing stored on the device, so no consent banner (privacy.html#statistics says what
      it sends; keep the two in step). -->
 <img src="https://counter-324911926296.europe-west3.run.app/c?p=/" alt="" width="1" height="1" style="position:absolute;left:-9999px">
